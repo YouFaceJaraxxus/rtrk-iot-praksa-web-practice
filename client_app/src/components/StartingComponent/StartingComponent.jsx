@@ -89,7 +89,7 @@ class StartingComponent extends Component {
                 <hr/>
                 <button onClick={this.navigateToCars}>GO TO CARS WITH TEXT VALUE</button>
                 <hr/>
-                <Link to = {`cars/${this.state.incrementer}`}>Go to cars!</Link>
+                <Link to = {`cars/${this.state.incrementer}?myParam=someValue`}>Go to cars!</Link>
                 <div>
                     <Link to = '/chart'>Go to charts!</Link>
                 </div>

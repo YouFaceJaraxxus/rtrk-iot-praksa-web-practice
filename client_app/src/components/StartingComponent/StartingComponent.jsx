@@ -50,6 +50,10 @@ class StartingComponent extends Component {
         })
     }
 
+    alertNumber = (number) => {
+        alert('The number is : ' + number);
+    }
+
     handleInputChange = (event) => {
         this.setState({
             textInput : event.target.value
@@ -78,6 +82,7 @@ class StartingComponent extends Component {
                 </div>
                 <button onClick={this.incrementCounter}>INCREMENT</button>
                 <button onClick={this.decrementCounter}>DECREMENT</button>
+                <button onClick={() => this.alertNumber(10)}>ALERT NUMBER</button>
                 <div>
                     <input type='text' onChange={this.handleInputChange} value={this.state.textInput}></input>
                 </div>

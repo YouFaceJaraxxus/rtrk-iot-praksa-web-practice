@@ -10,7 +10,7 @@ class DefaultComponent extends Component {
                 I'm a default component!
                 </div>
                 <div>
-                    <Link to = {`/cars/4`}>Go to cars!</Link>
+                    <Link to = {`/cars/${this.state.incrementer}`}>Go to cars!</Link>
                 </div>
                 <div>
                     <Link to = '/chart'>Go to charts!</Link>

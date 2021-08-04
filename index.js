@@ -3,12 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const carRoute = require('./routes/car');
+const deviceRoute = require('./routes/device');
 const defaultRoute = require('./routes/default');
 const moment = require('moment');
 
 app.use(jsonParser);
 
 app.use('/api/car', carRoute);
+app.use('/api/device', deviceRoute);
 
 app.get('/api/time', (req, res) => {
   res.status(200).json({

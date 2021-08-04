@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
     if(carId){
         carDao.getCarById(carId, result => {
             if(result){
-                res.status(201).json({
+                res.status(200).json({
                     result
                 })
             }

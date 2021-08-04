@@ -43,7 +43,7 @@ class StartingComponent extends Component {
     }
 
     decrementCounter = () => {
-        let newCounter = this.state.counter + 1;
+        let newCounter = this.state.counter - 1;
         this.setState({
             counter : this.state.counter - 1,
             colorIndex : Math.abs(newCounter) % 3
@@ -89,9 +89,12 @@ class StartingComponent extends Component {
                 <hr/>
                 <button onClick={this.navigateToCars}>GO TO CARS WITH TEXT VALUE</button>
                 <hr/>
-                <Link to = {`cars/${this.state.incrementer}?myParam=someValue`}>Go to cars!</Link>
+                    <Link to = {`cars/${this.state.incrementer}?myParam=someValue`}>Go to cars!</Link>
                 <div>
                     <Link to = '/chart'>Go to charts!</Link>
+                </div>
+                <div>
+                    <Link to = '/devices'>Go to devices!</Link>
                 </div>
             </div>
          );

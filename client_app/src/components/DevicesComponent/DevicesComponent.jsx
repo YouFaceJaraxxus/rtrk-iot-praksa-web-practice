@@ -37,7 +37,7 @@ class DevicesComponent extends Component {
 
             devices&&devices.length>0? devices.map(device => (
                 <div key = {device.id}>
-                    {device.id} - {device.serialNumber} - {device.measurementInterval}
+                    {device.id} - {device.measurementInterval} - {device.serialNumber}
                 </div>
             ))
 
@@ -53,14 +53,14 @@ class DevicesComponent extends Component {
         return ( 
             <div>
                 <div>
-                    Hello, I'm the DEVICES component!
+                    Hello, I'm the DEVICE component!
                 </div>
                 <div>
                     <h1>Devices list</h1>
                     {this.mapDevices()}
                 </div>
                 <div>
-                    <Link to = 'start'>Go to start!</Link>
+                    <Link to = {{pathname : '/start', myParam : 'hello'}}>Go to start!</Link>
                 </div>
             </div>
          );

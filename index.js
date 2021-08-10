@@ -2,19 +2,19 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const carRoute = require('./routes/car');
-const deviceRoute = require('./routes/device');
+const deviceRoute=require('./routes/device');
+const measurementRoute = require('./routes/data');
 const defaultRoute = require('./routes/default');
 const moment = require('moment');
 
 app.use(jsonParser);
 
-app.use('/api/car', carRoute);
 app.use('/api/device', deviceRoute);
+app.use('/api/data', measurementRoute);
 
 app.get('/api/time', (req, res) => {
-  res.status(200).json({
-    time : moment().utc().format('YYYY-MM-DD HH:mm:ss')
+  res.status(200).json({   //mi vracamo json
+    time : moment().utc().format('YYYY-MM-DD HH:mm:ss') //moment  vraca tren vrij
   })
 });
 

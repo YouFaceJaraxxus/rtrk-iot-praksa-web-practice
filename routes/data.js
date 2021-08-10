@@ -1,19 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const measurementDao = require('../dao/measurementDao');
 const deviceDao = require('../dao/deviceDao');
 
 router.get('/', (req, res) => {
-    deviceDao.getAllDevices(result => {
+    measurementDao.getAllMeasurements(result => {
         res.status(200).json({
-            devices : result
+            measurements : result
         })
     })
 })
 
 router.get('/:id', (req, res) => {
-    let deviceId = req.params.id;
-    if(deviceId){
-        deviceDao.getDeviceById(deviceId, result => {
+    let measurementId = req.params.id;
+    if(measurementId){
+        measurementDao.getMeasurementById(measurementId, result => {
             if(result){
                 res.status(201).json({ //200
                     result
@@ -21,7 +22,7 @@ router.get('/:id', (req, res) => {
             }
             else{
                 res.status(404).json({
-                    error : 'Device not found'
+                    error : 'Measurement not found'
                 })
             }
         })
@@ -32,13 +33,61 @@ router.get('/:id', (req, res) => {
     }
 })
 
+router.get('/device/:id/latest', (req, res) => {
+    let deviceId = req.params.id; //????
+    if(deviceId){
+        measurementDao.getLatestMeasurementByDeviceId(deviceId, result => {
+            if(result){
+                res.status(201).json({ //200
+                    result
+                })
+            }
+            else{
+                res.status(404).json({
+                    error : 'Measurements not found'
+                })
+            }
+        })
+    }else{
+        res.status(422).json({
+            error : 'Invalid parameters.'
+        })
+    }
+})
+
+router.get('/device/:id', (req, res) => {
+    let deviceId = req.params.id; //????
+    if(deviceId){
+        measurementDao.getMeasurementsByDeviceId(deviceId, result => {
+            if(result){
+                res.status(201).json({ //200
+                    result
+                })
+            }
+            else{
+                res.status(404).json({
+                    error : 'Measurements not found'
+                })
+            }
+        })
+    }else{
+        res.status(422).json({
+            error : 'Invalid parameters.'
+        })
+    }
+})
+
+
+
 router.post('/', (req, res) => {
-    let measurementInterval = req.body.measurementInterval;
-    let serialNumber = req.body.serialNumber;
-    if(measurementInterval && serialNumber){
-        deviceDao.addDevice(measurementInterval,serialNumber, result => {
-            res.status(201).json({
-                result
+    let measurement = req.body;
+    console.log('measurement', measurement);
+    if(measurement){
+        measurementDao.addMeasurement(measurement, result => {
+            deviceDao.getDeviceById(measurement.DEVICE_id, result =>  {
+                res.status(201).json(
+                    result
+                )
             })
         })
     }else{
@@ -48,6 +97,8 @@ router.post('/', (req, res) => {
     }
 })
 
+
+/*
 router.put('/:id/measurementInterval', (req, res) => {
     let deviceId = req.params.id;
     let measurementInterval = req.body.measurementInterval;
@@ -93,6 +144,8 @@ router.put('/:id/serialNumber', (req, res) => {
         })
     }
 })
+
+*/
 
 router.delete('/:id', (req, res) => {
     let deviceId = req.params.id;

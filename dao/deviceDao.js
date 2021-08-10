@@ -16,7 +16,7 @@ exports.getDeviceById = (deviceId, callback) => {
 }
 
 exports.addDevice = (measurementInterval, serialNumber, callback) => {
-    let queryString = `INSERT INTO device(measurementInterval, serialNumber) VALUES (${measurementInterval}, '${serialNumber}')`;
+    let queryString = `INSERT INTO device(measurementInterval, serialNumber) VALUES (${measurementInterval},'${serialNumber}')`;
     dao.sendQuery(queryString, result => {
         return callback(result);
     })

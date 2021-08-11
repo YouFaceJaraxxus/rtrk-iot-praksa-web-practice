@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 
 class MeasurementItemComponent extends Component {
@@ -29,23 +30,23 @@ class MeasurementItemComponent extends Component {
                 {this.state.measurement==null?
 
                 <div>
-                    Loading data.
+                    <h2>Device: {this.props.deviceId}</h2>
+                    No data.
+                    <hr/>
                 </div>
 
                 :
 
-                <div>
+                <div class="measurementItem">
                     <h2>Device: {this.props.deviceId}</h2>
 
                     <div>Temperature:   {this.state.measurement.temperature}</div>
                     <div>Gyroscope:     ({this.state.measurement.gyroX}, {this.state.measurement.gyroY}, {this.state.measurement.gyroZ})</div>
                     <div>Accelerometer: ({this.state.measurement.accX}, {this.state.measurement.accY}, {this.state.measurement.accZ})</div>
                     <div>Magnetometer:  ({this.state.measurement.magX}, {this.state.measurement.magY}, {this.state.measurement.magZ})</div>
-                    <div>Date:          {this.state.measurement.date}</div>
+                    <div>Date:          {moment(this.state.measurement.date).format('DD-MM-YYYY HH:mm')}</div>
 
-                    <Link to = {{pathname: '/device/' + this.props.deviceId, myParam: 'CHART'}}> Go to chart! </Link>
-                    
-                    <hr/>
+                    <Link to = {{pathname: '/device/' + this.props.deviceId, myParam: 'CHART'}}> More data... </Link>
                 </div>
                 
                 }

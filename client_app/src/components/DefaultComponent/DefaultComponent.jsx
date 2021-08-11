@@ -5,18 +5,12 @@ class DefaultComponent extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>
-                <div>
-                I'm a default component!
-                </div>
-                <div>
-                    <Link to = {`/devices/1?myParam=someOtherValue`}>Go to devices!</Link>
-                </div>
-                <div>
-                    <Link to = '/chart'>Go to charts!</Link>
-                </div>
-            </div>
-            
+            <div className="defaultComponent">
+                <link rel="stylesheet" href="DefaultComponentStyle.css"/>
+                <h1 class="title" id="title1">Ljetna praksa 2021</h1>
+                <h2 class="title" id="title2">Implementacija</h2>
+                <h2 class="title" id="title2">IoT rješenja</h2>
+            </div> 
          );
     }
 }

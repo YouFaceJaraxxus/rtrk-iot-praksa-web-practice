@@ -84,7 +84,7 @@ router.post('/', (req, res) => {
     console.log('measurement', measurement);
     if(measurement){
         measurementDao.addMeasurement(measurement, result => {
-            deviceDao.getDeviceById(measurement.DEVICE_id, result =>  {
+            deviceDao.getDeviceById(measurement.deviceId, result =>  {
                 res.status(201).json(
                     result
                 )

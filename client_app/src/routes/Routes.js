@@ -13,10 +13,10 @@ class Routes extends Component {
             <BrowserRouter>
                 <HeaderComponent></HeaderComponent>
                 <Switch>
-                    <Route path='/data' component={MeasurementComponent}></Route>
-                    <Route path='/device/:id' component={ChartComponent}></Route>
-                    <Route path='/devices' component={DevicesComponent}></Route>
-                    <Route path='/' component={DevicesComponent}></Route>
+                    <Route exact path='/data' component={MeasurementComponent}></Route>
+                    <Route exact path='/devices' component={DevicesComponent}></Route>
+                    <Route exact path='/device/:id' component={ChartComponent}></Route>
+                    <Route exact path='/' component={DefaultComponent}></Route>
                 </Switch>
             </BrowserRouter>
          );

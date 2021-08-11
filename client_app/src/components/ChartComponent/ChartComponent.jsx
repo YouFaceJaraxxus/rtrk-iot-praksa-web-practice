@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-
+import './ChartComponent.css'
 class ChartComponent extends Component {
     constructor(props){
         super(props);
@@ -87,15 +87,9 @@ class ChartComponent extends Component {
 
         axios.get('/api/data/device/' + this.state.deviceId)
         .then(response => {
-            //console.log('response data', response.data.result);
             let measurements = response.data.result;
             let currentDate = moment().subtract(31, 'minutes');
             let currentDateString = currentDate.utc().format('YYYY-MM-DD HH:mm');
-
-           // gyroChartData.labels.push(currentDate.utc().format('HH:mm'));
-           // accChartData.labels.push(currentDate.utc().format('HH:mm'));
-           // magChartData.labels.push(currentDate.utc().format('HH:mm'));
-            //tempChartData.labels.push(currentDate.utc().format('HH:mm'));
             for(let i = 0; i<31; i++){
 
                 var flag = false;
@@ -112,10 +106,6 @@ class ChartComponent extends Component {
                     let measurementDate = measurement.date;
                     
                     let measurementDateString = moment(measurementDate).utc().format('YYYY-MM-DD HH:mm');
-                    //console.log('measurementDateString', measurementDateString);
-                    
-                     console.log('measurementDateString', measurementDateString);
-                     console.log('currentDateString', currentDateString);
                     if(measurementDateString == currentDateString){
                         flag = true;
                         gyroChartData.datasets[0].data.push(measurement.gyroX);
@@ -138,18 +128,18 @@ class ChartComponent extends Component {
 
                 if(!flag) {
                     gyroChartData.datasets[0].data.push(0);
-                        gyroChartData.datasets[1].data.push(0);
-                        gyroChartData.datasets[2].data.push(0);
+                    gyroChartData.datasets[1].data.push(0);
+                    gyroChartData.datasets[2].data.push(0);
 
-                        accChartData.datasets[0].data.push(0);
-                        accChartData.datasets[1].data.push(0);
-                        accChartData.datasets[2].data.push(0);
+                    accChartData.datasets[0].data.push(0);
+                    accChartData.datasets[1].data.push(0);
+                    accChartData.datasets[2].data.push(0);
 
-                        magChartData.datasets[0].data.push(0);
-                        magChartData.datasets[1].data.push(0);
-                        magChartData.datasets[2].data.push(0);
+                    magChartData.datasets[0].data.push(0);
+                    magChartData.datasets[1].data.push(0);
+                    magChartData.datasets[2].data.push(0);
 
-                        tempChartData.datasets[0].data.push(0);
+                    tempChartData.datasets[0].data.push(0);
                 }
             }
            
@@ -178,9 +168,7 @@ class ChartComponent extends Component {
     render() { 
         return ( 
             <div>
-                <div>
-                    Welcome to chart!
-                </div>
+                <h1>Device {this.state.deviceId}</h1>
                 <div>
                     {this.state.gyroChartData == null ? 
                         <div>
@@ -189,7 +177,11 @@ class ChartComponent extends Component {
 
                         :
 
-                        <Line data = {this.state.gyroChartData}></Line>
+                        <div className="chart-wrapper">
+                            <h3>Gyroscope measurements:</h3>
+                            <Line data = {this.state.gyroChartData}></Line>
+                        </div>
+                        
                     }
                 </div>
                 <hr/>
@@ -201,7 +193,11 @@ class ChartComponent extends Component {
 
                         :
 
-                        <Line data = {this.state.accChartData}></Line>
+                        <div className="chart-wrapper">
+                            <h3>Accelerometer measurements:</h3>
+                            <Line data = {this.state.accChartData}></Line>
+                        </div>
+                        
                     }
                 </div>
                 <hr/>
@@ -213,7 +209,10 @@ class ChartComponent extends Component {
 
                         :
 
-                        <Line data = {this.state.magChartData}></Line>
+                        <div className="chart-wrapper">
+                            <h3>Magnetometer measurements:</h3>
+                            <Line data = {this.state.magChartData}></Line>
+                        </div>
                     }
                 </div>
                 <hr/>
@@ -225,12 +224,11 @@ class ChartComponent extends Component {
 
                         :
 
-                        <Line data = {this.state.tempChartData}></Line>
+                        <div className="chart-wrapper">
+                            <h3>Temperature measurements:</h3>
+                            <Line data = {this.state.tempChartData}></Line>
+                        </div>
                     }
-                </div>
-                <hr/>
-                <div>
-                    <Link to = '/start'>Go to start!</Link>
                 </div>
             </div>
          );

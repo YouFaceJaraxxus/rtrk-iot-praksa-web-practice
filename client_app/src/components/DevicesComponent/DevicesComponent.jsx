@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DeviceItemComponent from './DeviceItemComponent/DeviceItemComponent';
 import qs from 'qs';
+import '../../Style.css';
+import './DevicesComponent.css'
 
 class DevicesComponent extends Component {
     
@@ -131,20 +133,24 @@ class DevicesComponent extends Component {
 
     render() { 
         return ( 
-            <div>
-                <div>
-                    {this.state.myParam}
-                </div>
-                <div>
+            <div class="devicesComponent">
+                <div class="devicesList">
                     <h1>Devices list</h1>
                     {this.mapDevices()}
                 </div>
                 
-                <hr/>
-                <input type='text' value={this.state.serialNumber} onChange={this.handleSerialNumberInputChange}></input>
-                <input type='text' value={this.state.measurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
-                
-                <button onClick={this.addDevice}>ADD DEVICE</button>
+                <div class="addNewDevice">
+                    <h1>Add new device</h1>
+                    <div class="labelInput">
+                        <label>Serial number</label>
+                        <input type='text' value={this.state.serialNumber} onChange={this.handleSerialNumberInputChange}></input>
+                    </div>
+                    <div class="labelInput">
+                        <label>Measurement interval</label>
+                        <input type='text' value={this.state.measurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
+                    </div>
+                    <button id="button1" onClick={this.addDevice}>ADD DEVICE</button>
+                </div>
             </div>
          );
     }

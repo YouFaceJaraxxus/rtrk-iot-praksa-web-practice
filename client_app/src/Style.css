@@ -1,0 +1,108 @@
+.navbar {
+    background-color: #9887ff;
+    height: 70px;
+}
+
+.sticky {
+    width: 100%;
+    top: 0;
+    position: fixed;
+}
+
+
+.defaultComponent {
+    background-image: url('./images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/*
+.defaultComponent {
+    top: 70px;
+}
+*/
+
+.title {
+    color: lightgrey;
+    background: transparent;
+    margin-top: 30px;
+    text-align: left;
+}
+
+#title1 {
+    margin-left: 30px;
+    margin-top: 140px;
+    font-size: 70pt;
+}
+
+#title2 {
+    margin-left: 30px;
+    margin-top: 30px;
+    font-size: 55pt;
+}
+
+.devicesComponent {
+    background-image: url('./images/bluryBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+.measurementComponent {
+    background-image: url('./images/bluryBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: lightgray;
+    
+}
+
+.devicesList {
+    height: 100%;
+    width: 60%;
+    z-index: 1;
+    top: 70px;
+    overflow-x: hidden;
+    left: 0;
+    color: lightgray;;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+.measurementItem {
+    height: inherit;    
+    width: inherit;
+    color: lightgray;
+    border-radius: 25px;
+    border: gray;
+    border-style: ridge;
+    padding: 30px;
+    margin: 10px;
+}
+
+a {
+    color: lightskyblue;
+    font-size: 15pt;
+}
+
+h1 {
+    margin-left: 30px;
+}

@@ -17,14 +17,14 @@ exports.getMeasurementById = (measurementId, callback) => {
 }
 
 exports.getMeasurementsByDeviceId = (deviceId, callback) => {
-    let queryString = `SELECT * FROM measurement WHERE DEVICE_id = ${deviceId}`;
+    let queryString = `SELECT * FROM measurement WHERE deviceId = ${deviceId}`;
     dao.sendQuery(queryString, result => {
          return callback(result);
     })
 }
 
 exports.getLatestMeasurementByDeviceId = (deviceId, callback) => {
-    let queryString = `SELECT * FROM measurement WHERE DEVICE_id = ${deviceId} order by id desc limit 1`;
+    let queryString = `SELECT * FROM measurement WHERE deviceId = ${deviceId} order by id desc limit 1`;
     dao.sendQuery(queryString, result => {
         if(result&&result.length>0) return callback(result[0]);
         else return callback(null);
@@ -33,10 +33,10 @@ exports.getLatestMeasurementByDeviceId = (deviceId, callback) => {
 
 exports.addMeasurement = (measurement, callback) => {
     let date = moment().utc().format("YYYY-MM-DD HH:mm:ss");
-    let queryString = `INSERT INTO measurement(temperature, gyroX, gyroY, gyroZ, accX, accY, accZ, magX, magY, magZ, date, DEVICE_id)
+    let queryString = `INSERT INTO measurement(temperature, gyroX, gyroY, gyroZ, accX, accY, accZ, magX, magY, magZ, date, deviceId)
                         VALUES (${measurement.temperature}, ${measurement.gyroX}, ${measurement.gyroY}, ${measurement.gyroZ},
                         ${measurement.accX}, ${measurement.accY}, ${measurement.accZ},
-                        ${measurement.magX}, ${measurement.magY}, ${measurement.magZ}, '${date}', ${measurement.DEVICE_id})`;
+                        ${measurement.magX}, ${measurement.magY}, ${measurement.magZ}, '${date}', ${measurement.deviceId})`;
     dao.sendQuery(queryString, result => {
         return callback(result);
     })

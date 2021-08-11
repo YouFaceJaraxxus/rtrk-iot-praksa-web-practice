@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../../../Style.css';
+import './DeviceItemComponent.css';
 
 
 class DeviceItemComponent extends Component {
@@ -11,10 +13,21 @@ class DeviceItemComponent extends Component {
     render() { 
         return ( 
             <div>
-                <label>{this.props.device.serialNumber}</label>
-                <input type='text' value={this.state.newMeasurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
-                <button onClick={this.updateDevice}>SET</button>
+                <div>
+                    <label>ID</label>
+                    <label>{this.props.device.id}</label>
+                </div>
                 <hr/>
+                <div>
+                    <label>Serial number</label>
+                    <label>{this.props.device.serialNumber}</label>
+                </div>
+                <hr/>
+                <div>
+                    <label>Measurement interval</label>
+                    <input type='text' value={this.state.newMeasurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
+                </div>
+                <button id="button1" onClick={this.updateDevice}>SET</button>
             </div>
          );
     }

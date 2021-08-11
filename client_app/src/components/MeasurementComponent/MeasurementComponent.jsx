@@ -45,7 +45,8 @@ class MeasurementComponent extends Component {
 
             :
 
-            devices&&devices.length>0? devices.map(device => (
+            devices&&devices.length>0? 
+            devices.map(device => (
                 <MeasurementItemComponent 
                     key={device.id}
                     deviceId = {device.id}
@@ -64,7 +65,7 @@ class MeasurementComponent extends Component {
     render() { 
         return ( 
             <div>
-                <div>
+                <div class="measurementComponent">
                     <h1>Data list</h1>
                     {this.mapMeasurements()}
                 </div>

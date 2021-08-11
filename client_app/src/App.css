@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: white;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +35,37 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.pushable {
+  display: inline-block;
+  background: hsl(340deg, 100%, 32%);
+  border: none;
+  border-radius: 15px;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px #999;
+  outline: none;
+}
+
+.font{
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background: hsl(345deg, 100% 47%);
+  color: white;
+  transform: translateY(-4px);
+}
+
+.pushable:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.pushable:hover {
+  background-color: yellow;
+}
+.pushable:focus:not(:focus-visible) {
+  outline: none;
 }

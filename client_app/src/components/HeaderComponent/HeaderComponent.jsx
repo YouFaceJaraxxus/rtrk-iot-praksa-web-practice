@@ -7,8 +7,19 @@ class HeaderComponent extends Component {
    
     render() { 
         return ( 
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light" expand="lg" class="sticky">
                 <Container>
+                    <LinkContainer to='/'>
+                        <Navbar.Brand>
+                            <img
+                                src="/RT-RK_logo.png"
+                                width="50"
+                                height="30"
+                                className="d-inline-block align-top"
+                                alt="React Bootstrap logo"
+                            />
+                        </Navbar.Brand>
+                    </LinkContainer>
                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

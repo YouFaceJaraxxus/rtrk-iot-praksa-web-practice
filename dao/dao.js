@@ -15,7 +15,10 @@ var pool  = mysql.createPool({
 
 exports.sendQuery = (queryString, callback) => {
     let results = pool.query(queryString, (error, results, fields)=>{
-        if (error) throw error;
+        if (error){
+            console.log('error', error);
+            return null;
+        }
         return callback(results)
     })
     return results;

@@ -7,27 +7,24 @@ class DeviceItemComponent extends Component {
     state = { 
         newMeasurementInterval : this.props.device.measurementInterval,
         device : this.props.device
-        //serialNumber : ''
-        //newCarName : ''
      }
     render() { 
         return ( 
-            <div>
-                <div>
-                    <label>ID</label>
-                    <label>{this.props.device.id}</label>
+            <div className="deviceItemComponent">
+                <div className="deviceItemFormGroup">
+                    <div className="customLabel">ID : </div>
+                    <div>{this.props.device.id}</div>
+                </div>
+                <div className="deviceItemFormGroup">
+                    <div className="customLabel">Serial number : </div>
+                    <div>{this.props.device.serialNumber}</div>
+                </div>
+                <div className="deviceItemFormGroup">
+                    <div className="customLabel">Measurement interval : </div>
+                    <input className="device-input customLabel" type='text' value={this.state.newMeasurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
+                    <button className="btn btn-primary" onClick={this.updateDevice}>SET</button>
                 </div>
                 <hr/>
-                <div>
-                    <label>Serial number</label>
-                    <label>{this.props.device.serialNumber}</label>
-                </div>
-                <hr/>
-                <div>
-                    <label>Measurement interval</label>
-                    <input type='text' value={this.state.newMeasurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
-                </div>
-                <button id="button1" onClick={this.updateDevice}>SET</button>
             </div>
          );
     }

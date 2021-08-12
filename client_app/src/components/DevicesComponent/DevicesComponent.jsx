@@ -133,23 +133,23 @@ class DevicesComponent extends Component {
 
     render() { 
         return ( 
-            <div class="devicesComponent">
-                <div class="devicesList">
-                    <h1>Devices list</h1>
+            <div className="devicesComponent background">
+                <div className="devicesList">
+                    <h1>Devices:</h1>
                     {this.mapDevices()}
                 </div>
                 
-                <div class="addNewDevice">
+                <div className="addNewDevice">
                     <h1>Add new device</h1>
-                    <div class="labelInput">
+                    <div className="addNewDeviceInputGroup">
                         <label>Serial number</label>
                         <input type='text' value={this.state.serialNumber} onChange={this.handleSerialNumberInputChange}></input>
                     </div>
-                    <div class="labelInput">
+                    <div className="addNewDeviceInputGroup">
                         <label>Measurement interval</label>
                         <input type='text' value={this.state.measurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
                     </div>
-                    <button id="button1" onClick={this.addDevice}>ADD DEVICE</button>
+                    <button className="btn btn-primary btn-block customButton" onClick={this.addDevice}>ADD DEVICE</button>
                 </div>
             </div>
          );

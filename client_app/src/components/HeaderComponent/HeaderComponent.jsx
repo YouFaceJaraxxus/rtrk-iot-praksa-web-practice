@@ -25,10 +25,10 @@ class HeaderComponent extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <LinkContainer to='/devices'>
-                            <Nav.Link>Device</Nav.Link>
+                            <Nav.Link>Devices</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/data'>
-                            <Nav.Link>Measurement</Nav.Link>
+                            <Nav.Link>Measurements</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     </Navbar.Collapse>

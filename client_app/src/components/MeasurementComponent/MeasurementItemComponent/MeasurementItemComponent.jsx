@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import './MeasurementItemComponent.css'
 
 
 class MeasurementItemComponent extends Component {
@@ -29,7 +30,7 @@ class MeasurementItemComponent extends Component {
             <div>
                 {this.state.measurement==null?
 
-                <div>
+                <div class="measurementItem">
                     <h2>Device: {this.props.deviceId}</h2>
                     No data.
                     <hr/>

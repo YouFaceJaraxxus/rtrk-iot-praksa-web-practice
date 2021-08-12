@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MeasurementItemComponent from './MeasurementItemComponent/MeasurementItemComponent';
 import qs from 'qs';
+import './MeasurementComponent.css'
 
 class MeasurementComponent extends Component {
     
@@ -65,8 +66,8 @@ class MeasurementComponent extends Component {
     render() { 
         return ( 
             <div>
-                <div class="measurementComponent">
-                    <h1>Data list</h1>
+                <div className="measurementComponent background">
+                    <h1 className="title">Measurements:</h1>
                     {this.mapMeasurements()}
                 </div>
         

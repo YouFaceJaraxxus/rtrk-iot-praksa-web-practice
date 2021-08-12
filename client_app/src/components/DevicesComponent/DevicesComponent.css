@@ -1,38 +1,57 @@
-input {
-    margin-right: 50px;
-    float: right;
-    position: relative;
+.devicesComponent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    background-image: url('../../images/bluryBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-label {
-    position: relative;
-    float: left;
-}
-
-#button1 {
-    margin-top: 25px;
-    position: relative;
-    float: right;
-    border-radius: 10px;
-    background-color: lightgray;
-
+.devicesList {
+    width: 60%;
+    color: lightgray;
+    padding: 1%;
 }
 
 
 .addNewDevice {
-    height: np;
     width: 30%;
-    position: fixed;
-    z-index: 1;
-    top: 70px;
-    overflow-x: hidden;
-    right: 0;
-    margin-top: 75px;
-    margin-right: 50px;
-    padding: 25px;
+    margin-right: 5%;
+    padding: 2%;
     color: lightgray;
     border-radius: 25px;
     border: darkgray;
     border-style: ridge;
-    background-blend-mode:saturation;
+    margin: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
+
+.addNewDeviceInputGroup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+.customButton{
+    width: 70%;
+}
+
+@media only screen and (max-width: 720px) {
+    .devicesList, .addNewDevice{
+        width: 100%;
+    }
+
+    .devicesComponent{
+        flex-wrap: wrap-reverse;
+    }
+  }

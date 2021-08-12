@@ -30,7 +30,7 @@ class MeasurementItemComponent extends Component {
             <div>
                 {this.state.measurement==null?
 
-                <div class="measurementItem">
+                <div className="measurementItem">
                     <h2>Device: {this.props.deviceId}</h2>
                     No data.
                     <hr/>
@@ -38,7 +38,7 @@ class MeasurementItemComponent extends Component {
 
                 :
 
-                <div class="measurementItem">
+                <div className="measurementItem">
                     <h2>Device: {this.props.deviceId}</h2>
 
                     <div>Temperature:   {this.state.measurement.temperature}</div>
@@ -48,6 +48,7 @@ class MeasurementItemComponent extends Component {
                     <div>Date:          {moment(this.state.measurement.date).format('DD-MM-YYYY HH:mm')}</div>
 
                     <Link to = {{pathname: '/device/' + this.props.deviceId, myParam: 'CHART'}}> More data... </Link>
+                    <hr/>
                 </div>
                 
                 }

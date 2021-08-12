@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
     if(measurementId){
         measurementDao.getMeasurementById(measurementId, result => {
             if(result){
-                res.status(201).json({ //200
+                res.status(200).json({
                     result
                 })
             }
@@ -34,17 +34,17 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/device/:id/latest', (req, res) => {
-    let deviceId = req.params.id; //????
+    let deviceId = req.params.id;
     if(deviceId){
         measurementDao.getLatestMeasurementByDeviceId(deviceId, result => {
             if(result){
-                res.status(201).json({ //200
+                res.status(200).json({
                     result
                 })
             }
             else{
-                res.status(404).json({
-                    error : 'Measurements not found'
+                res.status(200).json({
+                    error : 'No measurements.'
                 })
             }
         })
@@ -56,17 +56,17 @@ router.get('/device/:id/latest', (req, res) => {
 })
 
 router.get('/device/:id', (req, res) => {
-    let deviceId = req.params.id; //????
+    let deviceId = req.params.id;
     if(deviceId){
         measurementDao.getMeasurementsByDeviceId(deviceId, result => {
             if(result){
-                res.status(201).json({ //200
+                res.status(200).json({
                     result
                 })
             }
             else{
-                res.status(404).json({
-                    error : 'Measurements not found'
+                res.status(200).json({
+                    error : 'No measurements.'
                 })
             }
         })
@@ -81,7 +81,6 @@ router.get('/device/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     let measurement = req.body;
-    console.log('measurement', measurement);
     if(measurement){
         measurementDao.addMeasurement(measurement, result => {
             deviceDao.getDeviceById(measurement.deviceId, result =>  {
@@ -96,56 +95,6 @@ router.post('/', (req, res) => {
         })
     }
 })
-
-
-/*
-router.put('/:id/measurementInterval', (req, res) => {
-    let deviceId = req.params.id;
-    let measurementInterval = req.body.measurementInterval;
-    if(deviceId&&measurementInterval){
-        deviceDao.updateDeviceMeasurementInterval(deviceId, measurementInterval, result => {
-            if(result&&result.affectedRows>0){
-                res.status(200).json({
-                    result
-                })
-            }
-            else{
-                res.status(404).json({
-                    error : 'Device not found'
-                })
-            }
-        })
-    }else{
-        res.status(422).json({
-            error : 'Invalid parameters.'
-        })
-    }
-})
-
-router.put('/:id/serialNumber', (req, res) => {
-    let deviceId = req.params.id;
-    let serialNumber = req.body.serialNumber;
-    if(deviceId&&serialNumber){
-        deviceDao.updateDeviceSerialNumber(deviceId, serialNumber, result => {
-            if(result&&result.affectedRows>0){
-                res.status(200).json({
-                    result
-                })
-            }
-            else{
-                res.status(404).json({
-                    error : 'Device not found'
-                })
-            }
-        })
-    }else{
-        res.status(422).json({
-            error : 'Invalid parameters.'
-        })
-    }
-})
-
-*/
 
 router.delete('/:id', (req, res) => {
     let deviceId = req.params.id;
@@ -162,7 +111,6 @@ router.delete('/:id', (req, res) => {
     }
 })
 
-//just as an example of query parameters
 router.delete('/', (req, res) => {
     let deviceId = req.query.deviceId;
     if(deviceId){

@@ -10,10 +10,8 @@ class DevicesComponent extends Component {
     
     constructor(props){
         super(props);
-        console.log('device props', props);
         this.state.deviceId = this.props.match?.params?.id ? this.props.match.params.id : 'NO PARAMS PASSED';
         let queryParams = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
-        console.log(queryParams);
         this.state.myParam = queryParams?.myParam;
     }
     state = { 
@@ -41,32 +39,41 @@ class DevicesComponent extends Component {
             devices==null?
 
             <div>
-                Loading devices...
+                <div>
+                    Loading devices...
+                </div>
+                <hr/>
             </div>
 
             :
 
             devices&&devices.length>0? devices.map(device => (
-                <DeviceItemComponent 
-                    key={device.id}
-                    device = {device}
-                    deleteDeviceHandler = {this.deleteDevice}
-                    updateDeviceHandler = {this.updateDevice}
-                >
-                </DeviceItemComponent>
+                <div key={device.id}>
+                    <DeviceItemComponent 
+                        device = {device}
+                        deleteDeviceHandler = {this.deleteDevice}
+                        updateDeviceHandler = {this.updateDevice}
+                    >
+                    </DeviceItemComponent>
+                    <hr/>
+                </div>
+                
             ))
 
             :
 
             <div>
-                No devices.
+                <div>
+                    No devices.
+                </div>
+                <hr/>
             </div>
+
         )
     }
 
     deleteDevice = (device) => {
         axios.delete('/api/device/' + device.id).then(response => {
-            console.log('delete response', response)
             this.setState({
                 devices : this.state.devices.filter(singleDevice => singleDevice.id != device.id)
             })
@@ -82,7 +89,6 @@ class DevicesComponent extends Component {
                 'Content-type' : 'application/json'
             }
         }).then(response => {
-            console.log('update response', response)
             this.setState({
                 devices : this.state.devices.map(singleDevice => {
                     if(singleDevice.id!=device.id) return singleDevice;
@@ -117,7 +123,6 @@ class DevicesComponent extends Component {
                 'Content-type' : 'application/json'
             }
         }).then(response => {
-            console.log('post response', response)
             let devices = this.state.devices;
             devices.push({
                 measurementInterval : this.state.measurementInterval,

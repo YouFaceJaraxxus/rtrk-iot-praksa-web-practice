@@ -9,11 +9,9 @@ class MeasurementComponent extends Component {
     
     constructor(props){
         super(props);
-        console.log('device props', props);
         //this.state.deviceId = this.props.deviceId;
         this.state.deviceId = this.props.match?.params?.id ? this.props.match.params.id : 'NO PARAMS PASSED';
         let queryParams = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
-        console.log(queryParams);
         this.state.myParam = queryParams?.myParam;
     }
 

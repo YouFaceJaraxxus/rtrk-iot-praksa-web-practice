@@ -24,7 +24,6 @@ class DeviceItemComponent extends Component {
                     <input className="device-input customLabel" type='text' value={this.state.newMeasurementInterval} onChange={this.handleMeasurementIntervalInputChange}></input>
                     <button className="btn btn-primary" onClick={this.updateDevice}>SET</button>
                 </div>
-                <hr/>
             </div>
          );
     }

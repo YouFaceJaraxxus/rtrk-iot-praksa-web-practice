@@ -4,11 +4,6 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-
-    background-image: url('../../images/bluryBackground.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 .devicesList {
@@ -27,6 +22,8 @@
     border: darkgray;
     border-style: ridge;
     margin: 5%;
+
+    background-color: rgb(69, 73, 83);
 
     display: flex;
     flex-direction: column;

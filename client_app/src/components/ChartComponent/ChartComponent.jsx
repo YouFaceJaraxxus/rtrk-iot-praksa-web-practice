@@ -7,8 +7,6 @@ import './ChartComponent.css'
 class ChartComponent extends Component {
     constructor(props){
         super(props);
-
-        console.log('props', props);
         this.state.deviceId = props.match.params.id;
     }
 
@@ -93,7 +91,6 @@ class ChartComponent extends Component {
             for(let i = 0; i<31; i++){
 
                 var flag = false;
-                console.log(i);
                 currentDate = currentDate.add(1, 'minutes');
                 currentDateString = currentDate.utc().format('YYYY-MM-DD HH:mm');
 

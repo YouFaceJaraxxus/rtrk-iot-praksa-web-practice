@@ -7,7 +7,7 @@ class HeaderComponent extends Component {
    
     render() { 
         return ( 
-            <Navbar bg="light" expand="lg" class="sticky">
+            <Navbar bg="light" expand="lg" className="sticky">
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>

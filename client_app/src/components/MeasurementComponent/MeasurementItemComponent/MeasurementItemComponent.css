@@ -2,9 +2,6 @@
     height: inherit;    
     width: inherit;
     color: lightgray;
-    border-radius: 25px;
-    border: gray;
-    border-style: ridge;
     padding: 2%;
     margin-top: 1%
 }

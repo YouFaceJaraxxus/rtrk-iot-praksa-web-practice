@@ -13,8 +13,12 @@
     "mysql": "^2.18.1",
     "react-bootstrap": "^2.0.0-beta.4"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client_app",
     "dev": "concurrently \"npm run server\" \"npm run client\"",

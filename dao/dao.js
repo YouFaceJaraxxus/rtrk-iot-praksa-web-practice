@@ -17,7 +17,7 @@ exports.sendQuery = (queryString, callback) => {
     let results = pool.query(queryString, (error, results, fields)=>{
         if (error){
             console.log('error', error);
-            return null;
+            return callback(null);
         }
         return callback(results)
     })

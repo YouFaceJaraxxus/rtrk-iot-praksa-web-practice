@@ -1,7 +1,7 @@
 {
-  "name": "nodejs_project_1",
+  "name": "rtrk-praksa",
   "version": "1.0.0",
-  "description": "A NodeJS project",
+  "description": "An app for RT-RK summer practice",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",

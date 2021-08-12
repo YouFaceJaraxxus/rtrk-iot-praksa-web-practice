@@ -1,23 +1,23 @@
 var mysql = require('mysql');
 
-const HOST = 'localhost'
-const USERNAME = 'root';
-const PASSWORD = 'root';
-const database = 'mydb';
+const JAWS_DB_HOST = process.env.JAWS_DB_HOST || 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com';
+const JAWS_DB_USERNAME = process.env.JAWS_DB_USERNAME || 'xh3asb11d6uncr21';
+const JAWS_DB_PASSWORD = process.env.JAWS_DB_PASSWORD || 'xv6fzh4knbamm49y';
+const JAWS_DB_DATABASE = process.env.JAWS_DB_DATABASE || 'xifj81f2bnqon48s';
 
-var pool = mysql.createPool({
+var pool  = mysql.createPool({
     connectionLimit : 10,
-    host: HOST,
-    user: USERNAME,
-    password: PASSWORD,
-    database: database
-})
+    host: JAWS_DB_HOST,
+    user: JAWS_DB_USERNAME,
+    password: JAWS_DB_PASSWORD,
+    database: JAWS_DB_DATABASE
+});
 
 exports.sendQuery = (queryString, callback) => {
-    pool.query(queryString, (error, result, fields) => {
-        if(error) throw(error);
-        return callback(result);
+    let results = pool.query(queryString, (error, results, fields)=>{
+        if (error) throw error;
+        return callback(results)
     })
+    return results;
 }
-
 exports.pool = pool;
